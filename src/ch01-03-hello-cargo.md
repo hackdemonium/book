@@ -1,51 +1,47 @@
 ## Hello, Cargo!
 
-Cargo is Rust’s build system and package manager. Most Rustaceans use this tool
-to manage their Rust projects because Cargo handles a lot of tasks for you,
-such as building your code, downloading the libraries your code depends on, and
-building those libraries. (We call the libraries that your code needs
-*dependencies*.)
+Το Cargo είναι το σύστημα κατασκευής και ο διαχειριστής πακέτων της Rust. 
+Οι περισσότεροι Rustaceans χρησιμοποιούν αυτό το εργαλείο για να διαχειρίζονται 
+τα προγράμματα τους  επειδή το Cargo χειρίζεται πολλές εργασίες για εσάς, όπως 
+τη δημιουργία του κώδικά σας, τη λήψη των βιβλιοθηκών από τις οποίες εξαρτάται 
+ο κώδικάς σας και τη δημιουργία αυτών των βιβλιοθηκών. (Ονομάζουμε τις βιβλιοθήκες που 
+χρειάζεται ο κώδικάς σας εξαρτήσεις.)
 
-The simplest Rust programs, like the one we’ve written so far, don’t have any
-dependencies. If we had built the “Hello, world!” project with Cargo, it would
-only use the part of Cargo that handles building your code. As you write more
-complex Rust programs, you’ll add dependencies, and if you start a project
-using Cargo, adding dependencies will be much easier to do.
+Τα πιο απλά προγράμματα Rust, όπως αυτό που έχουμε γράψει μέχρι τώρα, δεν έχουν καμία εξάρτηση. 
+Αν είχαμε φτιάξει το “Hello, world!” με το Cargo, θα χρησιμοποιούσε μόνο το τμήμα του Cargo που 
+χειρίζεται τη δημιουργία του κώδικά σας. Καθώς γράφετε πιο σύνθετα προγράμματα Rust, θα προσθέτετε
+εξαρτήσεις και εάν ξεκινήσετε ένα πρόγραμμα χρησιμοποιώντας το Cargo, η προσθήκη εξαρτήσεων θα είναι πολύ πιο εύκολη.
 
-Because the vast majority of Rust projects use Cargo, the rest of this book
-assumes that you’re using Cargo too. Cargo comes installed with Rust if you
-used the official installers discussed in the
-[“Installation”][installation]<!-- ignore --> section. If you installed Rust
-through some other means, check whether Cargo is installed by entering the
-following in your terminal:
+Επειδή η συντριπτική πλειονότητα των προγραμμάτων Rust χρησιμοποιεί Cargo, το υπόλοιπο αυτού του βιβλίου 
+υποθέτει ότι χρησιμοποιείτε και εσείς Cargo. Το Cargo εγκαθίσταται με τη Rust εάν χρησιμοποιήσατε τα 
+επίσημα προγράμματα εγκατάστασης που αναφέρονται στην ενότητα [“Installation”][installation]<!-- ignore --> . 
+Εάν εγκαταστήσατε τη Rust με κάποιο άλλο τρόπο, ελέγξτε εάν το Cargo έχει εγκατασταθεί πληκτρολογώντας τα ακόλουθα στο τερματικό σας:
+
 
 ```console
 $ cargo --version
 ```
+Αν δείτε τον αριθμό έκδοσης το έχετε. Αν δείτε ένα σφάλμα όπως
+ `command not found`, ανατρέξτε στην τεκμηρίοση της μεθόδου σας
+ εγκατάστασης για να προσδιορίσετε πως θα εγκαταστήσετε ξεχωριστά το Cargo.
 
-If you see a version number, you have it! If you see an error, such as `command
-not found`, look at the documentation for your method of installation to
-determine how to install Cargo separately.
+### Δημιουργώντας ένα Πρόγραμμα με το Cargo
 
-### Creating a Project with Cargo
-
-Let’s create a new project using Cargo and look at how it differs from our
-original “Hello, world!” project. Navigate back to your *projects* directory
-(or wherever you decided to store your code). Then, on any operating system,
-run the following:
+Ας δημιουργήσουμε ένα πρόγραμμα χρησιμοποιώντας το Cargo για να δούμε πως
+διαφέρει από το πρωτότυπο “Hello, world!”. Περιηγηθείτε πίσω στον φάκελο *projects* 
+(ή οπουδήποτε έχετε αποφασίσει να αποθηκεύσετε τον κώδικά σας). Στη συνέχεια, σε οποιαδήποτε
+λειτουργικό σύστημα τρέξτε τα ακόλουθα:
 
 ```console
 $ cargo new hello_cargo
 $ cd hello_cargo
 ```
+Η πρώτη εντολή δημιουργεί ένα νέο φάκελο και πρόγραμμα με το όνομα  *hello_cargo*.
+Το ονομάσαμε εμείς έτσι και το Cargo δημιούργησε έναν φάκελο με αυτό το όνομα.
 
-The first command creates a new directory and project called *hello_cargo*.
-We’ve named our project *hello_cargo*, and Cargo creates its files in a
-directory of the same name.
-
-Go into the *hello_cargo* directory and list the files. You’ll see that Cargo
-has generated two files and one directory for us: a *Cargo.toml* file and a
-*src* directory with a *main.rs* file inside.
+Πηγαίνετε στον φάκελο *hello_cargo*  και δείτε τη λίστα των αρχείων. Θα παραηρήσετε
+ότι το Cargo έχει δημιουργήσει για εμάς, δύο αρχεία και έναν φάκελο: το αρχείο *Cargo.toml* και
+τον φάκελο *src* που περιέχει ένα αρχείο *main.rs* μέσα.
 
 It has also initialized a new Git repository along with a *.gitignore* file.
 Git files won’t be generated if you run `cargo new` within an existing Git
