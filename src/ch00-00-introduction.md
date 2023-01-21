@@ -1,26 +1,28 @@
-# Introduction
+# Είσαγωγή
 
-> Note: This edition of the book is the same as [The Rust Programming
-> Language][nsprust] available in print and ebook format from [No Starch
+> Σημείωση: Αυτή η έκδοση του βιβλίου είναι ίδια με το [The Rust Programming
+> Language][nsprust] διαθέσιμο εκτυπωμένο ή σε ηλεκτρονική μορφή από την [No Starch
 > Press][nsp].
 
 [nsprust]: https://nostarch.com/rust
 [nsp]: https://nostarch.com/
 
-Welcome to *The Rust Programming Language*, an introductory book about Rust.
-The Rust programming language helps you write faster, more reliable software.
-High-level ergonomics and low-level control are often at odds in programming
-language design; Rust challenges that conflict. Through balancing powerful
-technical capacity and a great developer experience, Rust gives you the option
-to control low-level details (such as memory usage) without all the hassle
-traditionally associated with such control.
+Καλώς ήρθατε στο εισαγωγικό βιβλίο *The Rust Programming Language*, της γλώσσας προγραμματισμού Rust.
+H Rust μας βοηθάει να γράφουμε πιο γρήγορο και πιο αξιόπιστο λογισμικό.
+Η εργονομία στο υψηλό επιπέδο  και ο έλεγχος του χαμηλού επιπέδου συχνά έρχονται 
+σε αντίθεση κατά τον σχεδιασμό μιας γλώσσας προγραμματισμού: Η Rust αντιπαρέρχεται
+αυτής της σύγκρουσης. Δια μέοου της εξισορρόπησης ισχυρής τεχνικής δυναμικότητας και
+μιας σπουδαίας προγραμματιστικής εμπειρίας, η Rust σας δίνει την επιλογή να ελέγξετε 
+στοιχεία χαμηλού επιπέδου (όπως η χρήση μνήμης) χωρίς την παραδοσιακή ταλαιπωρία
+που συνεπάγεται ένας τέτοιου είδους έλεγχος.
 
-## Who Rust Is For
 
-Rust is ideal for many people for a variety of reasons. Let’s look at a few of
-the most important groups.
+## Για ποιον είναι η Rust 
 
-### Teams of Developers
+Η Rust είναι ιδανική για πολύ κόσμο για πληθώρα λόγων. Ας δούμε μερικές από τις 
+ποιο σημαντικές ομάδες.
+
+### Ομάδες Προγραμματιστών
 
 Rust is proving to be a productive tool for collaborating among large teams of
 developers with varying levels of systems programming knowledge. Low-level code
