@@ -1,4 +1,4 @@
-# Είσαγωγή
+# Εισαγωγή
 
 > Σημείωση: Αυτή η έκδοση του βιβλίου είναι ίδια με το [The Rust Programming
 > Language][nsprust] διαθέσιμο εκτυπωμένο ή σε ηλεκτρονική μορφή από την [No Starch
@@ -11,7 +11,7 @@
 H Rust μας βοηθάει να γράφουμε πιο γρήγορο και πιο αξιόπιστο λογισμικό.
 Η εργονομία στο υψηλό επιπέδο  και ο έλεγχος του χαμηλού επιπέδου συχνά έρχονται 
 σε αντίθεση κατά τον σχεδιασμό μιας γλώσσας προγραμματισμού: Η Rust αντιπαρέρχεται
-αυτής της σύγκρουσης. Δια μέοου της εξισορρόπησης ισχυρής τεχνικής δυναμικότητας και
+αυτής της σύγκρουσης. Δια μέοου της εξισορρόπησης ισχυρής τεχνικής δυναμικής και
 μιας σπουδαίας προγραμματιστικής εμπειρίας, η Rust σας δίνει την επιλογή να ελέγξετε 
 στοιχεία χαμηλού επιπέδου (όπως η χρήση μνήμης) χωρίς την παραδοσιακή ταλαιπωρία
 που συνεπάγεται ένας τέτοιου είδους έλεγχος.
@@ -24,22 +24,23 @@ H Rust μας βοηθάει να γράφουμε πιο γρήγορο και 
 
 ### Ομάδες Προγραμματιστών
 
-Rust is proving to be a productive tool for collaborating among large teams of
-developers with varying levels of systems programming knowledge. Low-level code
-is prone to various subtle bugs, which in most other languages can be caught
-only through extensive testing and careful code review by experienced
-developers. In Rust, the compiler plays a gatekeeper role by refusing to
-compile code with these elusive bugs, including concurrency bugs. By working
-alongside the compiler, the team can spend their time focusing on the program’s
-logic rather than chasing down bugs.
+Η Rust αποδεικνύεται ένα παραγωγικό εργαλείο για την συνεργασία μεταξύ μεγάλων 
+ομάδων προγραμματιστών, με διαφορετικό επίπεδο γνώσης προγραμματισμού. Ο κώδικας
+χαμηλού επιπέδου είναι επιρρεπής σε διάφορα ανεπαίσθητα σφάλματα, τα οποία στις 
+περισσότερες άλλες γλώσσες μπορούν να εντοπιστούν από έμπειρους προγραμματιστές,
+μόνο μέσω εκτεταμένων δοκιμών και προσεκτικού ελέγχου του κώδικα. Στη Rust ο 
+μεταγλωττιστής παίζει το ρόλο του φύλακα, αρνούμενος να μεταγλωττίσει κώδικα που
+περιέχει αυτά τα άπιαστα σφάλματα, συμπεριλαμβανομένων και των σφαλμάτων συγχρονισμού. 
+Δουλεύοντας παράλληλα με τον μεταγλωττιστή, η ομάδα μπορεί να επικεντρωθεί στη 
+λογική του προγράμματος και όχι στο να κυνηγάει σφάλματα.
 
-Rust also brings contemporary developer tools to the systems programming world:
+Επιπρόσθετα η Rust παρέχει στον κόσμο των προγραμματιστών σύγχρονα εργαλεία:
 
-* Cargo, the included dependency manager and build tool, makes adding,
-  compiling, and managing dependencies painless and consistent across the Rust
-  ecosystem.
-* The Rustfmt formatting tool ensures a consistent coding style across
-  developers.
+* Το Cargo, που συμπεριλαμβάνεται ως διαχειριστής εξαρτήσεων και εργαλείο κατασκευής,
+  και κάνει χωρίς κόπο και με σταθερότητα την πρόσθεση, μεταγλώτισση και διαχείριση 
+  εξαρτήσεων μέσα στο περιβάλλον της Rust. 
+* Το εργαλείο μορφοποίησης Rustfmt που διασφαλίζει ένα συνεπές προγραμματιστικό στύλ 
+  στους προγραμματιστές
 * The Rust Language Server powers Integrated Development Environment (IDE)
   integration for code completion and inline error messages.
 
