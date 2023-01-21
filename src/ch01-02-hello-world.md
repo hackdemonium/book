@@ -42,7 +42,7 @@ $ cd hello_world
 > cd hello_world
 ```
 
-### Συγραφή και τρέξιμο ενός προγράμματος Rust
+### Συγγραφή και εκτέλεση ενός προγράμματος Rust
 
 Στη συνέχεια δημιουργήστε ένα νέο αρχείο πηγιαίου κώδικα και ονομάστε το *main.rs*. 
 Τα αρχεία της Rust πάντα τελειώνουν με την επέκταση *.rs*. Αν έχουμε πάνω από
@@ -85,28 +85,26 @@ Hello, world!
 [“Troubleshooting”][troubleshooting]<!-- ignore --> του κεφαλαίου Εγκατάσταση  για να
 βρείτε βοήθεια.
 
-If `Hello, world!` did print, congratulations! You’ve officially written a Rust
-program. That makes you a Rust programmer—welcome!
+Εάν εκτυπώθηκε το `Hello, world!`, συγχαρητήρια! Έχετε γράψει και επίσημα ένα πρόγραμμα
+Rust. Αυτό σας κάνει προγραμματιστή Rust—Καλώς ορίσατε!
 
-### Anatomy of a Rust Program
+### Η Ανατομία ενός προγράμματος Rust 
 
-Let’s review this “Hello, world!” program in detail. Here’s the first piece of
-the puzzle:
+Ας εξετάσουμε αναλυτικά το πρόγραμμα “Hello, world!”. Αυτό είναι το πρώτο κομμάτι του παζλ:
 
 ```rust
 fn main() {
 
 }
 ```
+Οι παραπάνω γραμμές ορίζουν μία συνάρτηση με το όνομα `main`. Η συνάρτηση  `main` είναι ξεχωριστή,
+είναι πάντα το πρώτο κομμμάτι κώδικα που τρέχει σε κάθε εκτελέσιμο πρόγραμμα της Rust. Εδώ οι πρώτες
+γραμμές δηλώνουν μια συνάρτηση, όπως έιπαμε, με το όνομα `main`, η οποπια δεν έχει παραμέτρους, ούτε 
+επιστρέφιε κάτι. Αν είχε παραμέτρους αυτοί θα ήταν μέσα στις παρενθέσεις `()`.
 
-These lines define a function named `main`. The `main` function is special: it
-is always the first code that runs in every executable Rust program. Here, the
-first line declares a function named `main` that has no parameters and returns
-nothing. If there were parameters, they would go inside the parentheses `()`.
-
-The function body is wrapped in `{}`. Rust requires curly brackets around all
-function bodies. It’s good style to place the opening curly bracket on the same
-line as the function declaration, adding one space in between.
+Το σώμα της συνάρτησης είναι περίκλειστο μέσα σε `{}`. Η Rust απαιτέι αγκύλες γύρω από όλα τα σώματα
+συναρτήσεων. Είναι σωστή πρακτική να τοποθετούμε την αγκύλη στην ίδια γραμμή με το δηλωτικό της συνάρτησης,
+αφήνοντας ένα κενό διάστημα μεταξύ τους.
 
 > Note: If you want to stick to a standard style across Rust projects, you can
 > use an automatic formatter tool called `rustfmt` to format your code in a
