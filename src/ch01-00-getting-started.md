@@ -1,8 +1,8 @@
-# Getting Started
+# Ξεκινώντας 
 
-Let’s start your Rust journey! There’s a lot to learn, but every journey starts
-somewhere. In this chapter, we’ll discuss:
+Ας ξεκινήσουμε το ταξίδι μας στη Rust! Υπάρουν πολλά να μάθουμε, αλλά κάθε 
+ταξίδι έχει ένα σημείο έναρξης. Στο κεφάλαιο αυτό θα συζητήσουμε:
 
-* Installing Rust on Linux, macOS, and Windows
-* Writing a program that prints `Hello, world!`
-* Using `cargo`, Rust’s package manager and build system
+* Εγκατάσταση της Rust στα Linux, macOS και Windows
+* Συγγραφή προγράμαμτος που εκτυπώνει `Hello, world!`
+* Χρησιμοποίηση του `cargo`, διαχειριστή πακέτων και κατασκευαστή της Rust.
