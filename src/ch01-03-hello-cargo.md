@@ -22,7 +22,7 @@
 $ cargo --version
 ```
 Αν δείτε τον αριθμό έκδοσης το έχετε. Αν δείτε ένα σφάλμα όπως
- `command not found`, ανατρέξτε στην τεκμηρίοση της μεθόδου σας
+ `command not found`, ανατρέξτε στην τεκμηρίωση της μεθόδου σας
  εγκατάστασης για να προσδιορίσετε πως θα εγκαταστήσετε ξεχωριστά το Cargo.
 
 ### Δημιουργώντας ένα Πρόγραμμα με το Cargo
@@ -43,9 +43,9 @@ $ cd hello_cargo
 ότι το Cargo έχει δημιουργήσει για εμάς, δύο αρχεία και έναν φάκελο: το αρχείο *Cargo.toml* και
 τον φάκελο *src* που περιέχει ένα αρχείο *main.rs* μέσα.
 
-It has also initialized a new Git repository along with a *.gitignore* file.
-Git files won’t be generated if you run `cargo new` within an existing Git
-repository; you can override this behavior by using `cargo new --vcs=git`.
+Επίσης έχει αρχικοποιήσει ένα νέο Git repository και ένα αρχείο *.gitignore*.
+Τα αρχεία Git δεν θα δημιουργηθούν εάν τρέξετε `cargo new` μέσα σε ένα ήδη υπάρχον Git
+repository, μπορείτε να παρακάμψετε αυτή τη συμπεριφορά με το `cargo new --vcs=git`.
 
 > Note: Git is a common version control system. You can change `cargo new` to
 > use a different version control system or no version control system by using
