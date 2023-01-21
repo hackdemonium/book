@@ -1,8 +1,9 @@
 ## Hello, World!
 
-Now that you’ve installed Rust, it’s time to write your first Rust program.
-It’s traditional when learning a new language to write a little program that
-prints the text `Hello, world!` to the screen, so we’ll do the same here!
+Αφού εγκαταστήσαμε την Rust, ήρθε η ώρα να γράψουμε το πρώτο μας πρόγραμμα.
+Είναι παράδοση, όταν μαθαίνουμε μια καινούργια γλώσσα προγραμματισμού, να
+γράφουμε ένα μικρό προγραμματάκι που εκτυπώνει στην οθόνη το κείμενο `Hello, world!`,
+οπότε ας κάνουμε το ίδιο και εδώ.
 
 > Note: This book assumes basic familiarity with the command line. Rust makes
 > no specific demands about your editing or tooling or where your code lives, so
