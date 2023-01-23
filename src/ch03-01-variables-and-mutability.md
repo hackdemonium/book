@@ -3,16 +3,9 @@
 
 Όπως αναφέρθηκε στην ενότητα [“Storing Values with Variables”][storing-values-with-variables]<!-- ignore -->, από προεπιλογή, οι μεταβλητές είναι αμετάβλητες. Είναι μια από τις πολλές ωθήσεις που σας δίνει η Rust, ώστε να γράψετε τον κώδικά σας με τρόπο που να εκμεταλλεύεται την ασφάλεια και τον εύκολο συγχρονισμό που προσφέρει η Rust. Ωστόσο, εξακολουθείτε να έχετε την επιλογή να κάνετε τις μεταβλητές σας ευμετάβλητες. Ας εξερευνήσουμε πώς και γιατί η Rust σας ενθαρρύνει να προτιμάτε την αμετάβλητότητα και γιατί μερικές φορές μπορεί να θέλετε να κάνετε εξαίρεση.
 
-Όταν μια μεταβλητή είναι αμετάβλητη, αν μια τιμή δεσμευτεί σε ένα όνομα, δεν μπορείτε να αλλάξετε αυτήν την τιμή. Για να το δείτε αυτό, δημιουργήστε ένα νέο προτζεκτ που ονομάζεται μεταβλητές στον κατάλογο των έργων σας χρησιμοποιώντας νέες μεταβλητές φορτίου.
+Όταν μια μεταβλητή είναι αμετάβλητη, αν μια τιμή δεσμευτεί σε ένα όνομα, δεν μπορείτε να αλλάξετε αυτήν την τιμή. Για να το δείτε αυτό, δημιουργήστε ένα νέο προτζεκτ που ονομάζεται *variables*  στον φάκελο των προγραμμάτων σας χρησιμοποιώντας την εντολή `cargo new variables`.
 
-When a variable is immutable, once a value is bound to a name, you can’t change
-that value. To illustrate this, generate a new project called *variables* in
-your *projects* directory by using `cargo new variables`.
-
-Στη συνέχεια, στον νέο σας κατάλογο μεταβλητών, ανοίξτε το src/main.rs και αντικαταστήστε τον κώδικά του με τον ακόλουθο κώδικα, ο οποίος δεν θα μεταγλωττιστεί ακόμα:
-
-Then, in your new *variables* directory, open *src/main.rs* and replace its
-code with the following code, which won’t compile just yet:
+Στη συνέχεια, στον νέο σας φάκελο *variables*, ανοίξτε το *src/main.rs* και αντικαταστήστε τον κώδικά του με τον ακόλουθο κώδικα, ο οποίος δεν θα μεταγλωττιστεί ακόμα:
 
 <span class="filename">Όνομα αρχείου: src/main.rs</span>
 
@@ -20,17 +13,14 @@ code with the following code, which won’t compile just yet:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-01-variables-are-immutable/src/main.rs}}
 ```
 
-Save and run the program using `cargo run`. You should receive an error message
-regarding an immutability error, as shown in this output:
+Αποθηκεύστε και εκτελέστε το πρόγραμμα χρησιμοποιώντας την εντολή `cargo run`. Θα πρέπει να λάβετε ένα μήνυμα σφάλματος σχετικά με ένα σφάλμα μη μεταβλητότητας, όπως φαίνεται σε αυτή την έξοδο:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-01-variables-are-immutable/output.txt}}
 ```
 
-This example shows how the compiler helps you find errors in your programs.
-Compiler errors can be frustrating, but really they only mean your program
-isn’t safely doing what you want it to do yet; they do *not* mean that you’re
-not a good programmer! Experienced Rustaceans still get compiler errors.
+Αυτό το παράδειγμα δείχνει πώς ο μεταγλωττιστής σάς βοηθά να βρείτε σφάλματα στα προγράμματά σας. Τα σφάλματα μεταγλωττιστή μπορεί να είναι ενοχλητικά, αλλά στην πραγματικότητα το μόνο που σημαίνουν είναι ότι το πρόγραμμά σας δεν κάνει ακόμα με ασφάλεια αυτό που θέλετε να κάνει. δεν σημαίνουν ότι δεν είσαι καλός προγραμματιστής! Οι έμπειροι Rustaceans εξακολουθούν να λαμβάνουν σφάλματα μεταγλωττιστή.
+
 
 You received the error message `` cannot assign twice to immutable variable `x`
 `` because you tried to assign a second value to the immutable `x` variable.
@@ -190,21 +180,6 @@ ch02-00-guessing-game-tutorial.html#comparing-the-guess-to-the-secret-number
 [const-eval]: ../reference/const_eval.html
 
 
-Μεταβλητές και Μεταβλητότητα
-
-Όπως αναφέρθηκε στην ενότητα "Αποθήκευση τιμών με μεταβλητές", από προεπιλογή, οι μεταβλητές είναι αμετάβλητες. Αυτό είναι ένα από τα πολλά ωθήσεις που σας δίνει η Rust για να γράψετε τον κώδικά σας με τρόπο που να εκμεταλλεύεται την ασφάλεια και τον εύκολο ταυτόχρονο που προσφέρει η Rust. Ωστόσο, εξακολουθείτε να έχετε την επιλογή να κάνετε τις μεταβλητές σας μεταβλητές. Ας εξερευνήσουμε πώς και γιατί το Rust σας ενθαρρύνει να προτιμάτε την αμετάβλητη και γιατί μερικές φορές μπορεί να θέλετε να εξαιρεθείτε.
-
-Όταν μια μεταβλητή είναι αμετάβλητη, όταν μια τιμή δεσμευτεί σε ένα όνομα, δεν μπορείτε να αλλάξετε αυτήν την τιμή. Για να το δείξετε αυτό, δημιουργήστε ένα νέο έργο που ονομάζεται μεταβλητές στον κατάλογο των έργων σας χρησιμοποιώντας νέες μεταβλητές φορτίου.
-
-Στη συνέχεια, στον νέο σας κατάλογο μεταβλητών, ανοίξτε το src/main.rs και αντικαταστήστε τον κώδικά του με τον ακόλουθο κώδικα, ο οποίος δεν θα μεταγλωττιστεί ακόμα:
-
-Όνομα αρχείου: src/main.rs
-
-{{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-01-variables-are-immutable/src/main.rs}}
-Αποθηκεύστε και εκτελέστε το πρόγραμμα χρησιμοποιώντας τη λειτουργία cargo run. Θα πρέπει να λάβετε ένα μήνυμα σφάλματος σχετικά με ένα σφάλμα μη μεταβλητότητας, όπως φαίνεται σε αυτό το αποτέλεσμα:
-
-{{#include ../listings/ch03-common-programming-concepts/no-listing-01-variables-are-immutable/output.txt}}
-Αυτό το παράδειγμα δείχνει πώς ο μεταγλωττιστής σάς βοηθά να βρείτε σφάλματα στα προγράμματά σας. Τα σφάλματα μεταγλωττιστή μπορεί να είναι απογοητευτικά, αλλά στην πραγματικότητα σημαίνουν μόνο ότι το πρόγραμμά σας δεν κάνει ακόμα με ασφάλεια αυτό που θέλετε να κάνει. δεν σημαίνουν ότι δεν είσαι καλός προγραμματιστής! Οι έμπειροι Rustaceans εξακολουθούν να λαμβάνουν σφάλματα μεταγλωττιστή.
 
 Λάβατε το μήνυμα σφάλματος δεν είναι δυνατή η εκχώρηση δύο φορές στη αμετάβλητη μεταβλητή `x` επειδή προσπαθήσατε να εκχωρήσετε μια δεύτερη τιμή στη μεταβλητή αμετάβλητη x.
 
