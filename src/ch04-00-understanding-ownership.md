@@ -1,7 +1,9 @@
-# Understanding Ownership
+# Κατανόηση Ιδιοκτησίας
 
-Ownership is Rust’s most unique feature and has deep implications for the rest
-of the language. It enables Rust to make memory safety guarantees without
-needing a garbage collector, so it’s important to understand how ownership
-works. In this chapter, we’ll talk about ownership as well as several related
-features: borrowing, slices, and how Rust lays data out in memory.
+Η Ιδιοκτησία έιναι το πιο μοναδικό χαρακτηριστικό και έχει βαθιές επιπτώσεις
+στην υπόλοιπη γλώσσα. Επιτρέπει στο Rust να παρέχει εγγυήσεις για την ασφάλεια 
+της μνήμης χωρίς να χρειάζεται συλλέκτης απορριμμάτων, επομένως είναι σημαντικό 
+να κατανοήσετε πώς λειτουργεί η ιδιοκτησία. Σε αυτό το κεφάλαιο, θα μιλήσουμε για 
+την ιδιοκτησία καθώς και για πολλά σχετικά χαρακτηριστικά: δανεισμό (borrowing), 
+φέτες (slices) και τον τρόποο που η Rust τοποθετεί τα δεδομένα στη μνήμη.
+
