@@ -1,17 +1,9 @@
 
 ## Mεταβλητές και Μεταβλητότητα
 
-Όπως αναφέρθηκε στην ενότητα [“Storing Values with Variables”][storing-values-with-variables]<!-- ignore -->, από προεπιλογή, οι μεταβλητές είναι αμετάβλητες. Είναι μια από τις πολλές ωθήσεις που σας δίνει η Rust, ώστε να γράψετε τον κώδικά σας με τρόπο που να εκμεταλλεύεται την ασφάλεια και τον εύκολο συγχρονισμό που προσφέρει η Rust. Ωστόσο, εξακολουθείτε να έχετε την επιλογή να κάνετε τις μεταβλητές σας μεταβλητές. Ας εξερευνήσουμε πώς και γιατί το Rust σας ενθαρρύνει να προτιμάτε την αμετάβλητη και γιατί μερικές φορές μπορεί να θέλετε να εξαιρεθείτε.
+Όπως αναφέρθηκε στην ενότητα [“Storing Values with Variables”][storing-values-with-variables]<!-- ignore -->, από προεπιλογή, οι μεταβλητές είναι αμετάβλητες. Είναι μια από τις πολλές ωθήσεις που σας δίνει η Rust, ώστε να γράψετε τον κώδικά σας με τρόπο που να εκμεταλλεύεται την ασφάλεια και τον εύκολο συγχρονισμό που προσφέρει η Rust. Ωστόσο, εξακολουθείτε να έχετε την επιλογή να κάνετε τις μεταβλητές σας ευμετάβλητες. Ας εξερευνήσουμε πώς και γιατί η Rust σας ενθαρρύνει να προτιμάτε την αμετάβλητότητα και γιατί μερικές φορές μπορεί να θέλετε να κάνετε εξαίρεση.
 
-As mentioned in the [“Storing Values with
-Variables”][storing-values-with-variables]<!-- ignore --> section, by default,
-variables are immutable. This is one of many nudges Rust gives you to write
-your code in a way that takes advantage of the safety and easy concurrency that
-Rust offers. However, you still have the option to make your variables mutable.
-Let’s explore how and why Rust encourages you to favor immutability and why
-sometimes you might want to opt out.
-
-Όταν μια μεταβλητή είναι αμετάβλητη, όταν μια τιμή δεσμευτεί σε ένα όνομα, δεν μπορείτε να αλλάξετε αυτήν την τιμή. Για να το δείξετε αυτό, δημιουργήστε ένα νέο έργο που ονομάζεται μεταβλητές στον κατάλογο των έργων σας χρησιμοποιώντας νέες μεταβλητές φορτίου.
+Όταν μια μεταβλητή είναι αμετάβλητη, αν μια τιμή δεσμευτεί σε ένα όνομα, δεν μπορείτε να αλλάξετε αυτήν την τιμή. Για να το δείτε αυτό, δημιουργήστε ένα νέο προτζεκτ που ονομάζεται μεταβλητές στον κατάλογο των έργων σας χρησιμοποιώντας νέες μεταβλητές φορτίου.
 
 When a variable is immutable, once a value is bound to a name, you can’t change
 that value. To illustrate this, generate a new project called *variables* in
