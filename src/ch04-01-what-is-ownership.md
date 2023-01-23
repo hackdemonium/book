@@ -74,23 +74,20 @@
 ### Πεδίο δράσης Μεταβλητής
 
 Τώρα που έχουμε ξεπεράσει τη βασική σύνταξη της Rust, δεν θα συμπεριλαμβάνουμε όλον τον `fn main() {` κώδικα στα παραδείγματα
-οπότε φροντίστε εάν τα ακολουθείτε, να τοποθετείτε τα παραδείγματα από μόνοι σας μέσα σε μια συνάρτηση `main`.
-As a result, our examples will be a
-bit more concise, letting us focus on the actual details rather than
-boilerplate code.
+οπότε φροντίστε εάν τα ακολουθείτε, να τοποθετείτε τα παραδείγματα από μόνοι σας μέσα σε μια συνάρτηση `main`. Αυτό θα έχει 
+αποτέλεσμα τα παραδείγματά μας να είναι συνοπτικά, επιτρέποντας μας να επικεντρωθούμε σε συγκεκριμένες λεπτομέρειες, παρά σε ένα  
+πρότυπο κώδικα.
 
-As a first example of ownership, we’ll look at the *scope* of some variables. A
-scope is the range within a program for which an item is valid. Take the
-following variable:
+Ως πρώτο παράδειγμα ιδιοκτησίας, θα δούμε το πεδίο δράσης *scope* ορισμένων μεταβλητών. Το πεδίο δράσης είναι ένα διάστημα εντός 
+τουν προγράμματος κατά το οποίο ένα αντικείμενο είναι έκγυρο. Έχουμε την παρακάτω μεταβλητή:
 
 ```rust
 let s = "hello";
 ```
 
-The variable `s` refers to a string literal, where the value of the string is
-hardcoded into the text of our program. The variable is valid from the point at
-which it’s declared until the end of the current *scope*. Listing 4-1 shows a
-program with comments annotating where the variable `s` would be valid.
+Η μεταβλητή `s`  σε μία κυριολεκτική συμβολοσειρά, η τιμή της οποίας έχει κωδικοποιηθεί επακριβώς στο κείμενο του προγράμματός μας.
+Η μεταβλητή είναι έγκυρη από το σημείο δήλωσης μέχρι το τέλος του πεδίου δράσης της. Το Listing 4-1  μας δείχνεί ένα πρόγραμμα 
+με σχόλια που περιγράφουν που η μεταβλητή `s` θα είναι έγκυρη.
 
 ```rust
 {{#rustdoc_include ../listings/ch04-understanding-ownership/listing-04-01/src/main.rs:here}}
