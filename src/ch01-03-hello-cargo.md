@@ -81,12 +81,12 @@ Language*), η οποία είναι η μορφή διαμόρφωσης του
 μεταγλωττίσει το πρόγραμμά σας: το όνομα, την έκδοση και την έκδοση της Rust που θα χρησιμοποιηθεί.
 Θα μιλήσουμε για το κλειδί `edition` στο [Appendix E][appendix-e]<!-- ignore -->.
 
-The last line, `[dependencies]`, is the start of a section for you to list any
-of your project’s dependencies. In Rust, packages of code are referred to as
-*crates*. We won’t need any other crates for this project, but we will in the
-first project in Chapter 2, so we’ll use this dependencies section then.
+Η τελευταία γραμμή, `[dependencies]`, είναι η κεφαλίδα της ενότητας για να καταχωρήσετε τις εξαρτήσεις 
+του προγράμματος. Στην Rust τα αυτά τα πακέτα κώδικα αναφέρονται ως κουτιά *crates*. Δεν θα χρειαστούμε
+κάποια κουτιά για το πρόγραμμά μας, πράγμα που θα συμβει στο πρώτο πρόγραμμα του Κεφαλαίου 2, οπότε και 
+θα χρησιμοποιήσουμε αυτή την ενότητα.
 
-Now open *src/main.rs* and take a look:
+Ανοίξτε τώρα το *src/main.rs* και δείτε:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -96,10 +96,10 @@ fn main() {
 }
 ```
 
-Cargo has generated a “Hello, world!” program for you, just like the one we
-wrote in Listing 1-1! So far, the differences between our project and the
-project Cargo generated are that Cargo placed the code in the *src* directory
-and we have a *Cargo.toml* configuration file in the top directory.
+Το Cargo δημιούργησε για εσάς ένα πρόγραμμα “Hello, world!”, ίδιο με αυτό που γράψατε στο Listing 1-1! 
+Μέχρι στιγμής οι διαφορές μεταξύ του προγράμματός σας και του προγράμματος που δημιούργησε το Cargo, είναι
+ότι το Cargo τοποθέτησε τον κώδικα σε έναν φάκελο *src*  και επίσης έχουμε ένα αρχείο διαμόρφωσης *Cargo.toml* 
+στον αρχικό φάκεελο.
 
 Cargo expects your source files to live inside the *src* directory. The
 top-level project directory is just for README files, license information,
