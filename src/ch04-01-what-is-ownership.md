@@ -1,32 +1,31 @@
-## What Is Ownership?
+## Τι είναι η Ιδιοκτησία;
 
-*Ownership* is a set of rules that govern how a Rust program manages memory.
-All programs have to manage the way they use a computer’s memory while running.
-Some languages have garbage collection that regularly looks for no-longer-used
-memory as the program runs; in other languages, the programmer must explicitly
-allocate and free the memory. Rust uses a third approach: memory is managed
-through a system of ownership with a set of rules that the compiler checks. If
-any of the rules are violated, the program won’t compile. None of the features
-of ownership will slow down your program while it’s running.
+Η ιδιοκτησία *Ownership*  είναι ένα σύνολο κανόνων που διέπουν τον τρόπο με τον οποίο 
+ένα πρόγραμμα Rust διαχειρίζεται τη μνήμη. Όλα τα προγράμματα πρέπει να διαχειρίζουν 
+τον τρόπο με τον οποίο χρησιμοποιούν τη μνήμη ενός υπολογιστή κατά την εκτέλεση. 
+Ορισμένες γλώσσες διαθέτουν συλλογή σκουπιδιών που αναζητά τακτικά μνήμη που δεν χρησιμοποιείται 
+πλέον καθώς εκτελείται το πρόγραμμα. Σε άλλες γλώσσες, ο προγραμματιστής πρέπει να εκχωρήσει 
+και να ελευθερώσει ρητά τη μνήμη. Η Rust χρησιμοποιεί μια τρίτη προσέγγιση: η διαχείριση 
+της μνήμης γίνεται μέσω ενός συστήματος ιδιοκτησίας με ένα σύνολο κανόνων που ελέγχει ο μεταγλωττιστής. 
+Εάν κάποιος από τους κανόνες παραβιαστεί, το πρόγραμμα δεν θα μεταγλωττιστεί. Καμία από τις δυνατότητες 
+ιδιοκτησίας δεν θα επιβραδύνει το πρόγραμμά σας ενώ εκτελείται.
 
-Because ownership is a new concept for many programmers, it does take some time
-to get used to. The good news is that the more experienced you become with Rust
-and the rules of the ownership system, the easier you’ll find it to naturally
-develop code that is safe and efficient. Keep at it!
+Επειδή η ιδιοκτησία είναι μια νέα έννοια για πολλούς προγραμματιστές, οπότε χρειάζεται λίγος χρόνος
+για να τη συνηθίσουν. Τα καλά νέα είναι ότι όσο πιο έμπειροι γίνεστε με τη Rust και τους κανόνες του 
+συστήματος ιδιοκτησίας, τόσο πιο εύκολο είναι η φυσική ανάπτυξη κώδικα που είναι ασφαλής και αποτελεσματικός. Κρατήστε το!
 
-When you understand ownership, you’ll have a solid foundation for understanding
-the features that make Rust unique. In this chapter, you’ll learn ownership by
-working through some examples that focus on a very common data structure:
-strings.
+Όταν κατανοήσετε την ιδιοκτησία, θα έχετε μια σταθερή βάση για να κατανοήσετε τα χαρακτηριστικά που κάνουν τη Rust μοναδική. 
+Σε αυτό το κεφάλαιο, θα μάθετε την ιδιοκτησία δουλεύοντας μερικά παραδείγματα που εστιάζουν σε μια πολύ κοινή δομή δεδομένων: τις συμβολοσειρές.
 
-> ### The Stack and the Heap
+
+> ### Η Στοίβα και ο Σωρός
 >
-> Many programming languages don’t require you to think about the stack and the
-> heap very often. But in a systems programming language like Rust, whether a
-> value is on the stack or the heap affects how the language behaves and why
-> you have to make certain decisions. Parts of ownership will be described in
-> relation to the stack and the heap later in this chapter, so here is a brief
-> explanation in preparation.
+> Πολλές γλώσσες προγραμματισμού δεν ζητούν από εσας να σκέφτεστε τακτικά τη Στοίβα και το Σωρό.
+> Όμως στις γλώσσες προγραμματισμού συστήματος όπως η Rust κάθε φορά που μια τιμή είναι στη στοίβα
+> ή στο σωρό, επηρεάζει την συμπεριφορά της γλώσσας και το γιατί πρέπει να πάρουμε συγκεκριμένες αποφάσεις.
+> Τμήματα της ιδιοκτησίας  σε σχέση με τη στοίβα και το σωρό, θα συζητηθούν αργότερα στο κεφάλαιο, οπότε εδώ προετοιμάσαμε
+> μια σύντομη περιγραφή.
+> 
 >
 > Both the stack and the heap are parts of memory available to your code to use
 > at runtime, but they are structured in different ways. The stack stores
