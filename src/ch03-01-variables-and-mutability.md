@@ -116,11 +116,18 @@ to the value 10,800. See the [Rust Reference’s section on constant
 evaluation][const-eval] for more information on what operations can be used
 when declaring constants.
 
+
+Οι σταθερές ισχύουν για όλη τη διάρκεια εκτέλεσης ενός προγράμματος, εντός του πεδίου εφαρμογής στο οποίο δηλώθηκαν. Αυτή η ιδιότητα καθιστά χρήσιμες σταθερές για τιμές στον τομέα της εφαρμογής σας για τις οποίες μπορεί να χρειάζεται να γνωρίζουν πολλά μέρη του προγράμματος, όπως ο μέγιστος αριθμός πόντων που επιτρέπεται να κερδίσει ένας παίκτης ενός παιχνιδιού ή η ταχύτητα του φωτός.
+
+
 Constants are valid for the entire time a program runs, within the scope in
 which they were declared. This property makes constants useful for values in
 your application domain that multiple parts of the program might need to know
 about, such as the maximum number of points any player of a game is allowed to
 earn, or the speed of light.
+
+Η ονομασία των σκληρών κωδικοποιημένων τιμών που χρησιμοποιούνται σε όλο το πρόγραμμά σας ως σταθερές είναι χρήσιμη για τη μετάδοση της σημασίας αυτής της τιμής στους μελλοντικούς συντηρητές του κώδικα. Βοηθά επίσης να έχετε μόνο μία θέση στον κώδικά σας που θα πρέπει να αλλάξετε εάν η τιμή του σκληρού κωδικού έπρεπε να ενημερωθεί στο μέλλον.
+
 
 Naming hardcoded values used throughout your program as constants is useful in
 conveying the meaning of that value to future maintainers of the code. It also
@@ -128,6 +135,12 @@ helps to have only one place in your code you would need to change if the
 hardcoded value needed to be updated in the future.
 
 ### Shadowing
+
+Σκίαση
+
+Όπως είδατε στο σεμινάριο του παιχνιδιού εικασίας στο Κεφάλαιο 2, μπορείτε να δηλώσετε μια νέα μεταβλητή με το ίδιο όνομα με μια προηγούμενη μεταβλητή. Οι Rustaceans λένε ότι η πρώτη μεταβλητή σκιάζεται από τη δεύτερη, πράγμα που σημαίνει ότι η δεύτερη μεταβλητή είναι αυτό που θα δει ο μεταγλωττιστής όταν χρησιμοποιείτε το όνομα της μεταβλητής. Στην πραγματικότητα, η δεύτερη μεταβλητή επισκιάζει την πρώτη, λαμβάνοντας οποιεσδήποτε χρήσεις του ονόματος της μεταβλητής για τον εαυτό της μέχρι είτε να σκιαστεί η ίδια είτε να τελειώσει το εύρος. Μπορούμε να σκιάζουμε μια μεταβλητή χρησιμοποιώντας το όνομα της ίδιας μεταβλητής και επαναλαμβάνοντας τη χρήση της λέξης-κλειδιού let ως εξής:
+
+
 
 As you saw in the guessing game tutorial in [Chapter
 2][comparing-the-guess-to-the-secret-number]<!-- ignore -->, you can declare a
@@ -144,6 +157,11 @@ use of the `let` keyword as follows:
 ```rust
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-03-shadowing/src/main.rs}}
 ```
+Όνομα αρχείου: src/main.rs
+
+{{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-03-shadowing/src/main.rs}}
+Αυτό το πρόγραμμα δεσμεύει πρώτα το x σε μια τιμή 5. Στη συνέχεια, δημιουργεί μια νέα μεταβλητή x επαναλαμβάνοντας έστω x =, λαμβάνοντας την αρχική τιμή και προσθέτοντας 1, ώστε η τιμή του x να είναι στη συνέχεια 6. Στη συνέχεια, μέσα σε ένα εσωτερικό πεδίο που δημιουργήθηκε με το curly αγκύλες, η τρίτη πρόταση let σκιάζει επίσης το x και δημιουργεί μια νέα μεταβλητή, πολλαπλασιάζοντας την προηγούμενη τιμή επί 2 για να δώσει x μια τιμή 12. Όταν τελειώσει αυτό το πεδίο, η εσωτερική σκίαση τελειώνει και το x επιστρέφει στο 6. Όταν εκτελούμε αυτό το πρόγραμμα , θα παράγει τα εξής:
+
 
 This program first binds `x` to a value of `5`. Then it creates a new variable
 `x` by repeating `let x =`, taking the original value and adding `1` so the
@@ -152,6 +170,10 @@ brackets, the third `let` statement also shadows `x` and creates a new
 variable, multiplying the previous value by `2` to give `x` a value of `12`.
 When that scope is over, the inner shadowing ends and `x` returns to being `6`.
 When we run this program, it will output the following:
+{{#include ../listings/ch03-common-programming-concepts/no-listing-03-shadowing/output.txt}}
+Η σκίαση διαφέρει από την επισήμανση μιας μεταβλητής ως mut, επειδή θα λάβουμε ένα σφάλμα χρόνου μεταγλώττισης εάν προσπαθήσουμε κατά λάθος να αντιστοιχίσουμε ξανά σε αυτήν τη μεταβλητή χωρίς να χρησιμοποιήσουμε τη λέξη-κλειδί let. Χρησιμοποιώντας let, μπορούμε να εκτελέσουμε μερικούς μετασχηματισμούς σε μια τιμή, αλλά η μεταβλητή να είναι αμετάβλητη μετά την ολοκλήρωση αυτών των μετασχηματισμών.
+
+
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-03-shadowing/output.txt}}
@@ -163,6 +185,10 @@ using the `let` keyword. By using `let`, we can perform a few transformations
 on a value but have the variable be immutable after those transformations have
 been completed.
 
+Η άλλη διαφορά μεταξύ mut και shadowing είναι ότι επειδή δημιουργούμε ουσιαστικά μια νέα μεταβλητή όταν χρησιμοποιούμε ξανά τη λέξη-κλειδί let, μπορούμε να αλλάξουμε τον τύπο της τιμής αλλά να χρησιμοποιήσουμε ξανά το ίδιο όνομα. Για παράδειγμα, ας πούμε ότι το πρόγραμμά μας ζητά από έναν χρήστη να δείξει πόσα κενά θέλει μεταξύ κάποιου κειμένου εισάγοντας χαρακτήρες διαστήματος και, στη συνέχεια, θέλουμε να αποθηκεύσουμε αυτήν την είσοδο ως αριθμό:
+
+
+
 The other difference between `mut` and shadowing is that because we’re
 effectively creating a new variable when we use the `let` keyword again, we can
 change the type of the value but reuse the same name. For example, say our
@@ -173,22 +199,30 @@ inputting space characters, and then we want to store that input as a number:
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-04-shadowing-can-change-types/src/main.rs:here}}
 ```
 
+Η πρώτη μεταβλητή διαστημάτων είναι τύπος συμβολοσειράς και η δεύτερη μεταβλητή διαστημάτων είναι τύπος αριθμού. Έτσι, η σκίαση μας γλιτώνει από το να βρούμε διαφορετικά ονόματα, όπως spaces_str και spaces_num. Αντίθετα, μπορούμε να χρησιμοποιήσουμε ξανά το όνομα απλούστερων διαστημάτων. Ωστόσο, αν προσπαθήσουμε να χρησιμοποιήσουμε το mut για αυτό, όπως φαίνεται εδώ, θα λάβουμε ένα σφάλμα χρόνου μεταγλώττισης:
+
+
+
 The first `spaces` variable is a string type and the second `spaces` variable
 is a number type. Shadowing thus spares us from having to come up with
 different names, such as `spaces_str` and `spaces_num`; instead, we can reuse
 the simpler `spaces` name. However, if we try to use `mut` for this, as shown
 here, we’ll get a compile-time error:
 
+
 ```rust,ignore,does_not_compile
 {{#rustdoc_include ../listings/ch03-common-programming-concepts/no-listing-05-mut-cant-change-types/src/main.rs:here}}
 ```
+
+Το σφάλμα λέει ότι δεν επιτρέπεται να αλλάξουμε τον τύπο μιας μεταβλητής:
+
 
 The error says we’re not allowed to mutate a variable’s type:
 
 ```console
 {{#include ../listings/ch03-common-programming-concepts/no-listing-05-mut-cant-change-types/output.txt}}
 ```
-
+Τώρα που εξερευνήσαμε πώς λειτουργούν οι μεταβλητές, ας δούμε περισσότερους τύπους δεδομένων που μπορούν να έχουν.
 Now that we’ve explored how variables work, let’s look at more data types they
 can have.
 
