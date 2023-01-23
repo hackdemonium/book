@@ -30,34 +30,16 @@
 >Η στοίβα αποθηκεύει τις τιμές με τη σειρά που τις λαμβάνει και τις αφαιρεί με την αντίστροφη σειρά.
 >Αυτό αναφέρεται ως *last in, first out*. Ας σκεφτούμε μια στοίβα από πιάτα: όταν προσθέτεις περισσότερα πιάτα, τα τοποθετείς
 >στην κορυφή της στοίβας και όταν χρειάζεσαι ένα πιάτο, παίρνεις ένα από την κορυφή. Η πρόσθεση και η αφαίρεση πιάτων από τη μέση
->δεν θα δούλευε σωστα! 
-
-
-
-> Both the stack and the heap are parts of memory available to your code to use
-> at runtime, but they are structured in different ways. The stack stores
-> values in the order it gets them and removes the values in the opposite
-> order. This is referred to as *last in, first out*. Think of a stack of
-> plates: when you add more plates, you put them on top of the pile, and when
-> you need a plate, you take one off the top. Adding or removing plates from
-> the middle or bottom wouldn’t work as well! Adding data is called *pushing
-> onto the stack*, and removing data is called *popping off the stack*. All
-> data stored on the stack must have a known, fixed size. Data with an unknown
-> size at compile time or a size that might change must be stored on the heap
-> instead.
+>δεν θα δούλευε σωστα! Η πρόσθεση δεδομένων ονομάζεται *pushing onto the stack* και η αφαίρεση *popping off the stack*. Αντίθετα τα δεδομένα 
+>για τα οποία το μέγεθός τους είναι άγνωστο κατά τον χρόνο εκτέλεσης θα πρέπει να αποθηκεύονται στο Σωρό.
 >
-> The heap is less organized: when you put data on the heap, you request a
-> certain amount of space. The memory allocator finds an empty spot in the heap
-> that is big enough, marks it as being in use, and returns a *pointer*, which
-> is the address of that location. This process is called *allocating on the
-> heap* and is sometimes abbreviated as just *allocating* (pushing values onto
-> the stack is not considered allocating). Because the pointer to the heap is a
-> known, fixed size, you can store the pointer on the stack, but when you want
-> the actual data, you must follow the pointer. Think of being seated at a
-> restaurant. When you enter, you state the number of people in your group, and
-> the host finds an empty table that fits everyone and leads you there. If
-> someone in your group comes late, they can ask where you’ve been seated to
-> find you.
+> Ο σωρός είναι λιγότερο οργανωμένος: όταν τοποθετείς δεδομένα στο σωρό, ζητάς μία συγκεκριμένη ποσότητα αποθηκευτικού χώρου.
+> Ο εκχωρητής μνήμης βρίσκει ένα άδειο σημείο στο σωρό, το οποίο να είναι αρκετα μεγάλο και το μαρκάρει προς χρήση, ενω επιστρέφει
+> έναν δείκτη *pointer* ο οποίος είναι η διεύθυνση αυτού του σημείου. Η διαδικασία αυτή ονομάζεται *allocating on the
+> heap* ή πιο σύντομα απλά *allocating* (το σπρωξιμο τιμών στο σωρό δεν θεωρείται κατανομή). Επειδή ο δείκτης στο σωρό είναι γνωστός, σταθερού
+> μεγέθους, μπορείτε να τον αποθηκεύσετε στη στοίβα, όμως όταν θέλετε τα πραγματικά δεδομένα, πρέπει να ακολουθήσετε τον δείκτη.
+> Σκεφτείτε ότι θέλετε να καθίσετε σε ένα εστιατόριο. Αρχικά μπαίνετε και δηλώνετε τον αριθμό των ατόμων και ο οικοδεσπότης βρίσκει ένα
+> άδειο τραπέζι που θα σας χωράει και σας οδηγεί εκεί. Εάν κάποιος από την παρέα έρθει αργότερα θα ρωτήσει που κάθεστε για να σας βρει.
 >
 > Pushing to the stack is faster than allocating on the heap because the
 > allocator never has to search for a place to store new data; that location is
