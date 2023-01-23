@@ -1,11 +1,11 @@
-## Defining and Instantiating Structs
+## Καθορισμός και στιγμιοποίηση Δομών
 
-Structs are similar to tuples, discussed in [“The Tuple Type”][tuples]<!--
-ignore --> section, in that both hold multiple related values. Like tuples, the
-pieces of a struct can be different types. Unlike with tuples, in a struct
-you’ll name each piece of data so it’s clear what the values mean. Adding these
-names means that structs are more flexible than tuples: you don’t have to rely
-on the order of the data to specify or access the values of an instance.
+Οι Δομές είναι παρόμοιες με τις Πλειάδες που συζητούνται στην ενότητα [“The Tuple Type”][tuples]<!--
+ignore --> , καθώς και οι δύο κρατούν πολλαπλές σχετικές τιμές.
+Όπως οι πλειάδες, τα κομμάτια μιας δομής μπορούν να είναι διαφορετικού τύπου. Σε αντίθεση όμως, σε μια δομή, θα ονοματίσουμε κάθε κομμάτι δεδομένων, ώστε να είναι ξεκάθαρο τι σημαίνουν αυτές οι τιμές. Προσθέτωντας αυτά τα ονόματα σημαίνει ότι οι δομές είναι πολύ πιο ευέλικτες από τις πλειάδες: δεν χρειάζεται να βασιζόμαστε στην σειρά των δεδομένων, για να καθορίσουμε ή να έχουμε πρόσβαση στις τιμές ενός στιγμιοτύπου.
+
+
+Για να ορίσουμε δομή εισαγουμε τη
 
 To define a struct, we enter the keyword `struct` and name the entire struct. A
 struct’s name should describe the significance of the pieces of data being
