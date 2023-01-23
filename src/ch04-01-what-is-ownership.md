@@ -93,28 +93,22 @@ let s = "hello";
 {{#rustdoc_include ../listings/ch04-understanding-ownership/listing-04-01/src/main.rs:here}}
 ```
 
-<span class="caption">Listing 4-1: A variable and the scope in which it is
-valid</span>
+<span class="caption">Listing 4-1: Η Μεταβλητή και το πεδίο δράσης κατά το οποίο είναι έγκυρη</span>
 
-In other words, there are two important points in time here:
+Με άλλα λόγια, εδώ υπάρχουν δύο σημαντικά σημεία στον χρόνο: 
 
-* When `s` comes *into* scope, it is valid.
-* It remains valid until it goes *out of* scope.
+* Όταν η `s` εμφανίζεται μέσα *into* στο πεδίο δράσης, είναι έγκυρη.
+* Παραμένει έγκυρη εως ότου βγει εκτός *out of* πεδίου δράσης.
 
-At this point, the relationship between scopes and when variables are valid is
-similar to that in other programming languages. Now we’ll build on top of this
-understanding by introducing the `String` type.
+Σε αυτό το σημείο, η σχέδη ανάμεσα πεδίων δράσης και πότε οι μεταβλητές είναι έγκυρες, είναι πανομοιότυπη με τις άλλες γλώσσες
+προγραμματισμού. Τώρα θα δουλέψουμε με βάση αυτή τη κατανόηση, με την παρουσίαση του τύπου `String`.
 
-### The `String` Type
+### Ο τύπος Συμβολοσειρά `String`
 
-To illustrate the rules of ownership, we need a data type that is more complex
-than those we covered in the [“Data Types”][data-types]<!-- ignore --> section
-of Chapter 3. The types covered previously are of a known size, can be stored
-on the stack and popped off the stack when their scope is over, and can be
-quickly and trivially copied to make a new, independent instance if another
-part of code needs to use the same value in a different scope. But we want to
-look at data that is stored on the heap and explore how Rust knows when to
-clean up that data, and the `String` type is a great example.
+Για να επεξηγήσουμε τους κανόνες της ιδιοκτησίας, χρειαζόμαστε έναν πιο πολύπλοκο τύπο δεδομένων, σε σχέση με αυτούς που καλύψαμε στην ενότητα [“Data Types”][data-types], του Κεφαλαίου 3 <!-- ignore --> . Αυτοί οι τύποι είχαν γνωστό μέγεθος και μπορούσαν να αποθηκευτούν στη στοίβα, και να απορριφθούν από
+αυτή όταν είχε τελειώσει το πεδίο δράσης τους, ενώ μπορούσαν γρήγορα και τετριμμένα να αντιγραφούν ώστε να δημιουργηθούν νέα, ανεξάρτητα στιγμιότυπά τους
+έαν κάποιο άλλο κωμάτι κώδικα χεριαζόταν την τιμή του σε άλλο πεδίο δράσης. Όμως θέλουμε να εστιάσουμε σε δεδομένα που αποθηκεύονται στο σωρό και
+να ανακαλύψουμε πως γνωρίζει η Rust πότε θα καθαρίσει αυτά τα δεδομένα και για το λόγο αυτό ο τύπος `String` είναι εξαιρετικό παράδειγμα.
 
 We’ll concentrate on the parts of `String` that relate to ownership. These
 aspects also apply to other complex data types, whether they are provided by
