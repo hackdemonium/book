@@ -188,16 +188,12 @@ let s = String::from("hello");
 ```rust
 {{#rustdoc_include ../listings/ch04-understanding-ownership/no-listing-03-string-move/src/main.rs:here}}
 ```
+Δείχνει παρόμοιο, όποτε μπορεί να θεωρήσουμε ότι δουλεύει με τον ίδιο τρόπο: αυτό είναι, η δεύτερη γραμμή θα φτιάξει ένα σντίγραφο της τιμής της `s1` και
+θα την δεσμεύσει στην `s2`. Όμως δεν είναι ακριβώς αυτό που σημβαίνει.
 
-This looks very similar, so we might assume that the way it works would be the
-same: that is, the second line would make a copy of the value in `s1` and bind
-it to `s2`. But this isn’t quite what happens.
+Ρίξτε μια ματιά στο Figure 4-1, για να δείτε τι συμβαίνει στον `String`, στο παρασκήνιο. Ένας `String` είναι δομημένος από τρια στοιχεία, τα οποία εμφαίνονται στα αριστερά: ένας δείκτης στη μνήμη που κρατάει τα περιεχόμενα της συμβολοσειράς, ένα μήκος και μία χωρητικότητα. Αυτή η ομάδα δεδομένων,
+αποθηκεύεται στη στοίβα. Στα δεξιά είναι η μνήμη στον σωρό που κρατάει τα περιεχόμενα.
 
-Take a look at Figure 4-1 to see what is happening to `String` under the
-covers. A `String` is made up of three parts, shown on the left: a pointer to
-the memory that holds the contents of the string, a length, and a capacity.
-This group of data is stored on the stack. On the right is the memory on the
-heap that holds the contents.
 
 <img alt="Two tables: the first table contains the representation of s1 on the
 stack, consisting of its length (5), capacity (5), and a pointer to the first
@@ -205,19 +201,16 @@ value in the second table. The second table contains the representation of the
 string data on the heap, byte by byte." src="img/trpl04-01.svg" class="center"
 style="width: 50%;" />
 
-<span class="caption">Figure 4-1: Representation in memory of a `String`
-holding the value `"hello"` bound to `s1`</span>
+<span class="caption">Figure 4-1: Αναπαράσταση στη μνήμη ενός `String` που κρατάει την δεσμευμένη στην `s1` τιμή `"hello"`</span>
 
-The length is how much memory, in bytes, the contents of the `String` are
-currently using. The capacity is the total amount of memory, in bytes, that the
-`String` has received from the allocator. The difference between length and
-capacity matters, but not in this context, so for now, it’s fine to ignore the
-capacity.
+Tο μήκος είναι το πόσο μνήμη, σε bytes, χρησιμοποιούν τα περιεχόμενα του `String`. Η χωρητικότητα  είναι η συνολική ποσότητα μνήμης που έλαβε το `String`
+από τον εκχωρητή. Η διαφορά μεταξύ του μήκους και της χωρητικότητας έχει σημασία, αλλά όχι στο πλαίσιο αυτό, οπότε για την ώρα, είναι εντάξει αν αγνήσουμε
+τη χωρητικότητα.
 
-When we assign `s1` to `s2`, the `String` data is copied, meaning we copy the
-pointer, the length, and the capacity that are on the stack. We do not copy the
-data on the heap that the pointer refers to. In other words, the data
-representation in memory looks like Figure 4-2.
+Όταν εκχωρούμε το `s1` στο `s2` τα δεδομένα του `String` αντιγράφονται, εννοώντας ότι αντιγράφουμε τον δείκτη, το μήκος και την χωρητικότητα, που βρίσκονται
+στη στοίβα. Δεν αντιγράφουμε τα δεδομένα του σωρου, στα οποία αναφέρεται ο δείκτης. Με άλλα λόγια, η αναπαράσταση των δεδομένων στη μνήμη είναι όπως στο
+Figure 4-2
+
 
 <img alt="Three tables: tables s1 and s2 representing those strings on the
 stack, respectively, and both pointing to the same string data on the heap."
