@@ -216,51 +216,40 @@ Figure 4-2
 stack, respectively, and both pointing to the same string data on the heap."
 src="img/trpl04-02.svg" class="center" style="width: 50%;" />
 
-<span class="caption">Figure 4-2: Representation in memory of the variable `s2`
-that has a copy of the pointer, length, and capacity of `s1`</span>
+<span class="caption">Figure 4-2: Αναπαράσταση της μεταβλητής`s2` στην μνήμη,  η οποία περιέχει αντίγραφο του δείκτη, του μήκους και
+  της χωτηρικότητας της `s1`</span>
 
-The representation does *not* look like Figure 4-3, which is what memory would
-look like if Rust instead copied the heap data as well. If Rust did this, the
-operation `s2 = s1` could be very expensive in terms of runtime performance if
-the data on the heap were large.
+Η αναπαράστηση *δεν* μοιάζει με το Figure 4-3, το οποίο είναι πως θα έδειχνε η μνήμη εάν η Rust είναι αντιγράψει τα δεδομένα του σωρού.
+Εάν η Rust έκανε κάτι τέτοιο, η διεργασία `s2 = s1` θα ήταν πολύ κοστοβόρα στην απόδοση του χρόνου εκτέλεσης αν τα δεδομένα στον σωρό ήταν μεγάλα.
 
 <img alt="Four tables: two tables representing the stack data for s1 and s2,
 and each points to its own copy of string data on the heap."
 src="img/trpl04-03.svg" class="center" style="width: 50%;" />
 
-<span class="caption">Figure 4-3: Another possibility for what `s2 = s1` might
-do if Rust copied the heap data as well</span>
+<span class="caption">Figure 4-3: Μια άλλη πιθανότητα για τι θα μπορούσε να κάνει το `s2 = s1` εάν η Rust αντέγραφε τα δεδομένα του σωρού.</span>
 
-Earlier, we said that when a variable goes out of scope, Rust automatically
-calls the `drop` function and cleans up the heap memory for that variable. But
-Figure 4-2 shows both data pointers pointing to the same location. This is a
-problem: when `s2` and `s1` go out of scope, they will both try to free the
-same memory. This is known as a *double free* error and is one of the memory
-safety bugs we mentioned previously. Freeing memory twice can lead to memory
-corruption, which can potentially lead to security vulnerabilities.
+Προηγουμένως, είπαμε ότι όταν μια μεταβλητή βγαίνει από το πεδίο εφαρμογής της, η Rust αυτόματα καλέι την συνάρτηση *drop* και καθαρίζει
+την μνήμη του σωρού για αυτή τη μεταβλητή. Όμως το Figure 4-2 δείχνει και τους δύο δείκτες να δείχνουν στη ίδια διεύθυνση. Αυτό είναι πρόβλημα:
+Όταν η `s2` και η `s1` θα βγούν εκτός πεδίου, θα προσπαθήσουν και οι δύο να απελευθερώσουν την ίδια μνήμη. Αυτό είναι γνωστό ως σφάλμα *double free*
+και είναι ένα από τα σφάλματα ασφαλείας που επισημαίναμε προηγουμένως. Η διπλή απελευθέρωση μνήμης μπορεί να οδηγήσει σε αλλοιωση της μνήμης, που οδηγεί σε ευπάθειες ασφαλείας. 
 
-To ensure memory safety, after the line `let s2 = s1;`, Rust considers `s1` as
-no longer valid. Therefore, Rust doesn’t need to free anything when `s1` goes
-out of scope. Check out what happens when you try to use `s1` after `s2` is
-created; it won’t work:
+Για να διασφαλισθεί η ασφάλεια της μνήμης, μετά τη γραμμή `let s2 = s1;`, η Rust θεωρεί ότι η `s1` δεν είναι πλέον έγκυρη.  Για τον λόγο αυτό, η Rust 
+δεν χρειάζεται να απλευθερώσει τίποτε όταν η `s1` πηγαίνει εκτός πεδίυ εφαρμογής. Δείτε τώρα τι συμβαίνει ότα προσπαθούμε να χρησιμοποιήσουμε την `s1` 
+μετά τη σημιουργία της `s2`: δεν δουλεύει
 
 ```rust,ignore,does_not_compile
 {{#rustdoc_include ../listings/ch04-understanding-ownership/no-listing-04-cant-use-after-move/src/main.rs:here}}
 ```
 
-You’ll get an error like this because Rust prevents you from using the
-invalidated reference:
+Θα εμφανιστεί ένα σφάλμα σαν αυτό, διότι η Rust μας αποτρέπει να χρησιμοποιήσουμε μια μη έγκυρη αναφορά:
 
 ```console
 {{#include ../listings/ch04-understanding-ownership/no-listing-04-cant-use-after-move/output.txt}}
 ```
-
-If you’ve heard the terms *shallow copy* and *deep copy* while working with
-other languages, the concept of copying the pointer, length, and capacity
-without copying the data probably sounds like making a shallow copy. But
-because Rust also invalidates the first variable, instead of being called a
-shallow copy, it’s known as a *move*. In this example, we would say that `s1`
-was *moved* into `s2`. So, what actually happens is shown in Figure 4-4.
+Εάν έχετε ακούσει τους όρους *shallow copy* και *deep copy* όταν εργαστήκατε με άλλες γλώσσες προγραμματισμού, η έννοια της 
+αντιγραφής του δείκτη, του μήκους και της χωρητικότητας, χωρίς την αντιγραφή των δεδομένων μοιάζει περισσότερο με shallow copy.
+Όμως επειδή η Rust ακυρώνει επιπλέον την πρώτη μεταβλητή, αντί να ονομάζεται shallow copy, είναι γνωστή ως *move*. Στο παράδειγμα 
+αυτό θα μπορούσαμε να πούμε ότι η `s1` μετακεινήθηκε *moved* στην `s2`. Οπότε ότι συμβαίνει πραγματικά εμφαίνεται στο Figure 4-4.
 
 <img alt="Three tables: tables s1 and s2 representing those strings on the
 stack, respectively, and both pointing to the same string data on the heap.
@@ -268,11 +257,9 @@ Table s1 is grayed out be-cause s1 is no longer valid; only s2 can be used to
 access the heap data." src="img/trpl04-04.svg" class="center" style="width:
 50%;" />
 
-<span class="caption">Figure 4-4: Representation in memory after `s1` has been
-invalidated</span>
+<span class="caption">Figure 4-4: Αναπαράσταση της μνήμης μετά την ακύρωση της `s1`</span>
 
-That solves our problem! With only `s2` valid, when it goes out of scope it
-alone will free the memory, and we’re done.
+Αυτό επιλύει το πρόβλημά μας! Με μόνη έγκυρη την `s2`, αυτή μόλις θα βγει εκτός πεδίου δράσης θα απελευθερώσει τη μνήμη και τελειώσαμε. 
 
 In addition, there’s a design choice that’s implied by this: Rust will never
 automatically create “deep” copies of your data. Therefore, any *automatic*
